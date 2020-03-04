@@ -1,0 +1,62 @@
+---
+title: "Assignment 4"
+author: "Vignesh Narayanaswamy"
+date: "February 19, 2020"
+output: html_document
+---
+
+```{r}
+setwd("C:/Users/Vignesh N/Dropbox/2020 Bio697GA/old_notesR")
+SNPs <- read.table("23andMe_complete.txt", header = TRUE, sep = "\t")
+library(ggplot2)
+library(plotly)
+library(DT)
+```
+
+## Exercise 1
+
+#### Add title and labels for the x and y axis to Lab3 ex1. Color the bars blue
+
+```{r}
+ggplot(SNPs, aes(x=chromosome)) + geom_bar(fill = "blue")
+```
+
+## Exercise 2
+
+#### To Lab3 ex3 add more defined x and y axis labels, add a title, Change the colors of the genotypes, so that the dinucleotides (e.g. AA) are one color, the mononucleotides (A) are another and D's and I's a third color. One way to do this is to specify the color of each genotype.
+
+```{r}
+ggplot(SNPs, aes(x=chromosome, fill = genotype)) + geom_bar(color = "black") + xlab("Chromosomes") + ylab("Genotypes") + ggtitle("Lab 4, Exercise 2") + scale_fill_manual(values = c("black", "blue", "green", "green", "green", "green", "blue", "green", "green", "green", "red", "red", "red", "blue", "green", "green", "red", "red", "blue", "green"))
+```
+ 
+## Exercise 3
+
+#### From Lab3 ex5, make an output png file, then load the file into report using the RMarkdown or html format.
+
+![Lab 4, Exercise 3](Genotypes directly beside one another for each chromosome.jpeg)
+
+## Exercise 4
+
+#### For Lab3 ex6 add more descriptive x and y axis labels, add a title, make the x-axis for each graph readable in your final report file.
+
+```{r}
+ggplot(SNPs, aes(x=genotype, fill = chromosome)) + geom_bar(color = "black") + coord_polar() + facet_wrap(~chromosome) + xlab("Genotype broken down for each chromosome") + ylab("Genotype count") + ggtitle("Lab 4, Exercise 4")
+```
+
+## Exercise 5
+
+#### Turn Lab3 ex6 into an interactive graph using plotly
+
+```{r}
+ggplotly(ggplot(SNPs, aes(x=genotype, fill = chromosome)) + geom_bar(color = "black") + facet_wrap(~chromosome) + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), text = element_text(size=7)) + xlab("Genotype broken down for each chromosome") + ylab("Genotype count") + ggtitle("Lab 4, Exercise 4"))
+```
+
+## Exercise 6
+
+#### Make an interactive table of the SNPS found in on the Y chromosome from the 23andMe_complete data set
+
+```{r}
+SNPs_Y <- subset(SNPs, chromosome == "Y")
+datatable(SNPs_Y)
+```
+

@@ -1,0 +1,36 @@
+---
+title: "Lab2B"
+author: "Vignesh Narayanaswamy"
+date: "February 5, 2020"
+output: html_document
+---
+###Rmd file of Lab1
+###Exercise 1
+```{r}
+x=2
+y=8
+x+y
+x-y
+x*y
+x/y
+```
+
+###Exercise 2
+```{r}
+x=3.5; y=5
+logical_value = x^5>y^4
+logical_value
+```
+
+###Exercise 3
+```{r}
+vig <- c(211,62,108,43,129)
+sum_vig <- sum(vig)
+vig/sum_vig
+```
+
+###Exercise 4
+```{r}
+nuc <- c("A","T","C","G")
+sort(nuc)
+```

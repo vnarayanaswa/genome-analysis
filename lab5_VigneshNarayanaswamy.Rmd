@@ -1,0 +1,94 @@
+---
+title: "Assignment 5"
+author: "Vignesh Narayanaswamy"
+date: "February 26, 2020"
+output: html_document
+---
+
+## Answers to challenge questions
+
+```{r}
+library(tidyverse)
+download.file(url="https://ndownloader.figshare.com/files/2292169", destfile = "C:/Users/Vignesh N/Dropbox/2020 Bio697GA/data/portal_data_joined.csv")
+surveys <- read_csv("C:/Users/Vignesh N/Dropbox/2020 Bio697GA/data/portal_data_joined.csv")
+```
+
+### Challenge question 1
+
+#### Using pipes, subset the surveys data to include animals collected before 1995 and retain only the columns year, sex, and weight.
+```{r}
+surveys %>% filter(year < 1995) %>% select(year, sex, weight)
+```
+
+### Challenge question 2
+
+#### Create a new data frame from the surveys data that meets the following criteria: contains only the species_id column and a new column called hindfoot_half containing values that are half the hindfoot_length values. In this hindfoot_half column, there are no NAs and all values are less than 30.
+```{r}
+surveys_hindfoot_half <- surveys %>% filter(!is.na(hindfoot_length)) %>% mutate(hindfoot_half = hindfoot_length/2) %>% filter(hindfoot_half < 30) %>% select(species_id, hindfoot_half)
+surveys_hindfoot_half
+```
+
+### Challenge question 3
+
+#### 1. How many animals were caught in each plot_type surveyed?
+```{r}
+surveys %>% count(plot_type) 
+```
+
+#### 2. Use group_by() and summarize() to find the mean, min, and max hindfoot length for each species (using species_id). Also add the number of observations (hint: see ?n).
+
+```{r}
+surveys %>% filter(!is.na(hindfoot_length)) %>% group_by(species_id) %>% summarize(mean_hindfoot_length = mean(hindfoot_length), min_hindfoot_length = min(hindfoot_length), max_hindfoot_length = max(hindfoot_length),n = n())
+```
+
+#### 3. What was the heaviest animal measured in each year? Return the columns year, genus, species_id, and weight.
+
+```{r}
+surveys %>% filter(!is.na(weight)) %>% group_by(year) %>% filter(weight == max(weight)) %>% select(year, genus, species, weight) %>% arrange(year)
+```
+
+## Answers to Assignment 5 
+
+```{r}
+SNPs <- read_tsv("C:/Users/Vignesh N/Dropbox/2020 Bio697GA/data/23andMe_complete.txt", skip = 14, col_types = cols(chromosome = col_factor()))
+```
+
+### Exercise 1
+
+```{r}
+select(SNPs, position, genotype) %>% head("10")
+```
+
+### Exercise 2
+
+```{r}
+chromosome_MT <- select(filter(SNPs, chromosome == "MT", genotype != "A", genotype != "T"), rsid, chromosome, position, genotype)
+chromosome_MT %>% head(10)
+```
+
+### Exercise 3
+
+```{r}
+SNPs %>% group_by(chromosome) %>% summarise(min_position = min(position), max_position = max(position))
+SNPs %>% group_by(chromosome) %>% count(chromosome)
+```
+
+### Exercise 4
+
+```{r}
+SNPs %>% group_by(chromosome) %>% mutate(density_SNPs = 960614/(max(position)-min(position)))
+```
+
+### Exercise 5
+
+```{r}
+SNPs %>% group_by(chromosome) %>% mutate(density_SNPs = 960614/(max(position)-min(position))) %>% arrange(density_SNPs)
+```
+
+### Exercise 6
+
+```{r}
+SNPs_export <- SNPs %>% group_by(chromosome) %>% mutate(density_SNPs = 960614/(max(position)-min(position))) %>% arrange(density_SNPs)
+write_csv(SNPs_export, path = "C:/Users/Vignesh N/Dropbox/2020 Bio697GA/data/SNPs_export.csv")
+```
+
