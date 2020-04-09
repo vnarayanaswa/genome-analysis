@@ -18,6 +18,8 @@ bibliography: data/lab6references.bib
 
 [Lab 9](genome-analysis/Lab9_VigneshNarayanaswamy.html)
 
+[Lab 10](genome-analysis/lab10_VigneshNarayanaswamy.html)
+
 [@Bonnal2019]
 
 # References here
