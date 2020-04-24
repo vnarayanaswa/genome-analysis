@@ -1,12 +1,12 @@
 ---
-title: "Lab 6"
+title: "Genome Analysis Webpage"
 author: "Vignesh Narayanaswamy"
-date: "4/1/2020"
+date: "4-23-2020"
 output: html_document
 bibliography: data/lab6references.bib
 ---
 
-# Labs 2B-5
+# Labs 2B-5, 9, 10, and 11
 
 [Lab 2B](genome-analysis/lab2B_VigneshNarayanaswamy.html)
 
@@ -19,6 +19,14 @@ bibliography: data/lab6references.bib
 [Lab 9](genome-analysis/Lab9_VigneshNarayanaswamy.html)
 
 [Lab 10](genome-analysis/lab10_VigneshNarayanaswamy.html)
+
+[Lab 11, Exercise 1](https://vigneshnarayanaswamy.shinyapps.io/lab11_ex1/)
+
+[Lab 11, Exercise 2](https://vigneshnarayanaswamy.shinyapps.io/lab11_ex2/)
+
+[Lab 11, Exercise 3](https://vigneshnarayanaswamy.shinyapps.io/lab11_ex3/)
+
+#### Lab 11, Exercise 4: You mentioned that I do not have submit a link to this exercise as there might be an issue with shiny's web server. 
 
 [@Bonnal2019]
 
