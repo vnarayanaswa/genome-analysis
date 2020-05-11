@@ -2,7 +2,9 @@
 title: "Genome Analysis Webpage"
 author: "Vignesh Narayanaswamy"
 date: "4-23-2020"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 bibliography: data/lab6references.bib
 ---
 
@@ -16,9 +18,9 @@ bibliography: data/lab6references.bib
 
 [Lab 5](genome-analysis/lab5_VigneshNarayanaswamy.html)
 
-[Lab 9](genome-analysis/Lab9_VigneshNarayanaswamy.html)
+[Lab 9](genome-analysis/lab9.html)
 
-[Lab 10](genome-analysis/lab10_VigneshNarayanaswamy.html)
+[Lab 10](genome-analysis/lab10.html)
 
 [Lab 11, Exercise 1](https://vigneshnarayanaswamy.shinyapps.io/lab11_ex1/)
 
